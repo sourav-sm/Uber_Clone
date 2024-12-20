@@ -21,9 +21,13 @@ router.post('/login',[
     body('password').isLength({min:6}).withMessage('Password length should be minimum of 6')
 ],
   captainController.loginCaptain
-)
+);
 
-router.get('/profile',authMiddleware.authCaptain,captainController.getCaptainProfile)   
+router.get('/profile',
+  authMiddleware.authCaptain,captainController.getCaptainProfile
+);   
 
-router.get('/logout',authMiddleware.authCaptain,captainController.logoutCaptain);    
+router.get('/logout',
+  authMiddleware.authCaptain,captainController.logoutCaptain
+);    
 module.exports = router;
