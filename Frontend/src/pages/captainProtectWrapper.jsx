@@ -12,9 +12,6 @@ const CaptainProtectWrapper = ({
     const { captain, setCaptain } = useContext(CaptainDataContext)
     const [ isLoading, setIsLoading ] = useState(true)
 
-
-
-
     useEffect(() => {
         if (!token) {
             navigate('/captain-login')
@@ -31,7 +28,7 @@ const CaptainProtectWrapper = ({
             }
         })
             .catch(err => {
-
+                console.log(err);
                 localStorage.removeItem('token')
                 navigate('/captain-login')
             })

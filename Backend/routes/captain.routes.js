@@ -9,7 +9,7 @@ router.post('/register',[
     body('fullname.firstname').isLength({min:3}).withMessage('FirstName should be minimum of len 3'),
     body('password').isLength({min:6}).withMessage('Password should be minimum of len 6'),
     body('vehicle.color').isLength({min:3}).withMessage('Color should be minimum of len 3'),    
-    body('vehicle.plateNumber').isLength({min:3}).withMessage('Plate Number should be minimum of len 3'),   
+    body('vehicle.plate').isLength({min:3}).withMessage('Plate Number should be minimum of len 3'),   
     body('vehicle.capacity').isInt().withMessage('Capacity should be number'),  
     body('vehicle.vehicleType').isIn(['motorcycle','car','auto']).withMessage('Vehicle Type should be motorcycle, car or auto')
 ],

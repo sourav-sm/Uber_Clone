@@ -1,18 +1,34 @@
 import { Link } from "react-router-dom"
-import { useState } from 'react'
-
+import React,{ useContext, useState } from 'react'
+import { CaptainDataContext } from "../context/captainContext";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function UserLogin() {    
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');  
-    const [captainData,setCaptaindata]=useState({});
     
-    const submitHandler=(e)=>{
+    const {captain,setCaptain}=useContext(CaptainDataContext);//note it should be in curly braces
+    const navigate=useNavigate();
+
+    const submitHandler=async (e)=>{
         e.preventDefault();//this will prevent the page from reloading
-        setCaptaindata({
+        const captain={
             email:email,
-            password:password
-        });
+            password
+        };
+    
+       try{
+            const response=await axios.post(`${import.meta.env.VITE_BASE_URL}/captains/login`,captain);
+            if(response.status===200){//200 means the data is created successfully
+                const data=response.data;
+                setCaptain(data.captain);
+                localStorage.setItem('token',data.token);
+                navigate('/captain-home');    
+            }
+       }catch(error){
+              console.log('Error while logging user',error);
+       }
         //reset the input fields
         setEmail('');
         setPassword('');    
@@ -34,9 +50,9 @@ export default function UserLogin() {
                    value={password} onChange={(e)=>setPassword(e.target.value)}
                    />
                    
-                   <Link to={'/home'}  className="bg-black text-white font-semibold mt-5 mb-7 rounded px-4 py-2 w-full text-lg placeholder:text-base"  type="submit">
-                      Login
-                    </Link>
+                   <button
+                       className='bg-[#111] text-white font-semibold mb-3 rounded-lg px-4 py-2 w-full text-lg placeholder:text-base'
+                   >Login</button>
                   
                   <p  className="text-lg font-semibold">New Here?<Link to={"/captain-register"} className="text-blue-600"> Create new Account</Link> </p>
                </form>

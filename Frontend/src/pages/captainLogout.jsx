@@ -15,7 +15,6 @@ export const CaptainLogout = () => {
         if (response.status === 200) {
             localStorage.removeItem('captain-token')
             navigate('/')
-            console.log("link",import.meta.env.VITE_API_URL);
         }
     })
 
