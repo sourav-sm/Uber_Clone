@@ -34,9 +34,9 @@ export default function UserLogin() {
                    value={password} onChange={(e)=>setPassword(e.target.value)}
                    />
                    
-                   <button  className="bg-black text-white font-semibold mt-5 mb-7 rounded px-4 py-2 w-full text-lg placeholder:text-base"  type="submit">
+                   <Link to={'/home'}  className="bg-black text-white font-semibold mt-5 mb-7 rounded px-4 py-2 w-full text-lg placeholder:text-base"  type="submit">
                       Login
-                    </button>
+                    </Link>
                   
                   <p  className="text-lg font-semibold">New Here?<Link to={"/captain-register"} className="text-blue-600"> Create new Account</Link> </p>
                </form>

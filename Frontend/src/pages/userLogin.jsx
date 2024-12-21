@@ -1,21 +1,40 @@
-import { Link } from "react-router-dom"
-import { useState } from 'react'
+import { Link, useNavigate } from "react-router-dom";
+import { useContext,useState } from "react";
+import axios from "axios";
+import { UserDataContext } from "../context/userContext";
+
+const BASE_URL=import.meta.env.VITE_BASE_URL;
 
 export default function UserLogin() {    
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');  
-    const [userData,setUserdata]=useState({});
+    // const [userData,setUserdata]=useState({});
     
-    const submitHandler=(e)=>{
+    const {user,setUser}=useContext(UserDataContext)
+    const navigate=useNavigate();
+
+    const submitHandler= async (e)=>{
         e.preventDefault();//this will prevent the page from reloading
-        setUserdata({
+        const userData=({
             email:email,
             password:password
         });
         //reset the input fields
-        setEmail('');
-        setPassword('');    
-    }
+          
+        try{
+            const response=await axios.post(`${BASE_URL}/users/login`,userData);
+            if(response.status==200){//status 200 'ok' means user is logged in
+                const data=response.data;
+                setUser(data.user);
+                localStorage.setItem('token',data.token);
+                navigate('/home');
+            }
+            setEmail('');
+            setPassword('');
+        }catch(error){
+            console.log("Error while logging user",error.message);
+        }
+    };
     
     
     return (

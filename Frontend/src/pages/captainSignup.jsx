@@ -6,10 +6,16 @@ export default function UserLogin() {
     const [secondName, setSecondName] = useState('');  
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');  
+    const [vehileColor, setVehicleColor] = useState('');    
+    const [vehiclePlate, setVehiclePlate] = useState('');
+    const [vehicleCapacity, setVehicleCapacity] = useState('');
+    const [vehicleType, setVehicleType] = useState('');
+
+    
     const [CaptainData,setCaptaindata]=useState({});
     
-    const submitHandler=(e)=>{
-        e.preventDefault();//this will prevent the page from reloading
+    const submitHandler=(e)=>{ 
+        e.preventDefault();//thiswill prevent the page from reloading
         setCaptaindata({
             fullName:{
                 firstName:firstName,
@@ -17,12 +23,22 @@ export default function UserLogin() {
             },
             email:email,
             password:password,
+            vehicle: {
+                color: vehileColor,
+                plate: vehiclePlate,
+                capacity: vehicleCapacity,
+                vehicleType: vehicleType
+              }
         });
         //reset the input fields
         setEmail('');
         setPassword('');
         setFirstName('');
         setSecondName('');
+        setVehicleColor('')
+        setVehiclePlate('')
+        setVehicleCapacity('')
+        setVehicleType('')
     }
     
     
@@ -52,10 +68,59 @@ export default function UserLogin() {
                    <input type="password" required placeholder="Enter your Password" className="bg-gray-200 rounded px-4 py-2 border w-full text-lg placeholder:text-base" 
                    value={password} onChange={(e)=>setPassword(e.target.value)}
                    />
+
+         <h3 className='text-lg font-medium mb-2'>Vehicle Information</h3>
+            <div className='flex gap-4 mb-7'>
+              <input
+              required
+              className='bg-[#eeeeee] w-1/2 rounded-lg px-4 py-2 border text-lg placeholder:text-base'
+              type="text"
+              placeholder='Vehicle Color'
+              value={vehileColor}
+              onChange={(e) => {
+                  setVehicleColor(e.target.value)
+                }}
+              />
+              <input
+                required
+                className='bg-[#eeeeee] w-1/2 rounded-lg px-4 py-2 border text-lg placeholder:text-base'
+                type="text"
+                placeholder='Vehicle Plate'
+                value={vehiclePlate}
+                onChange={(e) => {
+                  setVehiclePlate(e.target.value)
+                }}
+              />
+            </div>
+            <div className='flex gap-4 mb-7'>
+                <input
+                  required
+                  className='bg-[#eeeeee] w-1/2 rounded-lg px-4 py-2 border text-lg placeholder:text-base'
+                  type="number"
+                  placeholder='Vehicle Capacity'
+                  value={vehicleCapacity}
+                  onChange={(e) => {
+                    setVehicleCapacity(e.target.value)
+                  }}
+                />
+                <select
+                  required
+                  className='bg-[#eeeeee] w-1/2 rounded-lg px-4 py-2 border text-lg placeholder:text-base'
+                  value={vehicleType}
+                  onChange={(e) => {
+                    setVehicleType(e.target.value)
+                  }}
+                >
+                  <option value="" disabled>Select Vehicle Type</option>
+                  <option value="car">Car</option>
+                  <option value="auto">Auto</option>
+                  <option value="moto">Moto</option>
+                </select>
+              </div>
                    
-                   <button  className="bg-black text-white font-semibold mt-5 mb-7 rounded px-4 py-2 w-full text-lg placeholder:text-base"  type="submit">
+                   <Link  className="bg-black text-white font-semibold mt-5 mb-7 rounded px-4 py-2 w-full text-lg placeholder:text-base"  type="submit">
                       Signup
-                    </button>
+                    </Link>
                   
                   <p  className="text-lg font-semibold">Already have a Account?<Link to={"/login"} className="text-blue-600"> Signin </Link> </p>
                </form>

@@ -1,28 +1,48 @@
-import { Link } from "react-router-dom"
-import { useState } from 'react'
+import { Link, useNavigate } from "react-router-dom"
+import { useState,useContext } from 'react'
+import axios from 'axios'
+import {UserDataContext} from '../context/userContext';
+const BASE_URL=import.meta.env.VITE_BASE_URL;
 
-export default function UserLogin() {
+
+export default function UserSignup() {
     const [firstName, setFirstName] = useState('');
     const [secondName, setSecondName] = useState('');  
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');  
-    const [userData,setUserdata]=useState({});
+    // const [userData,setUserdata]=useState({});
+    const {user,setUser}=useContext(UserDataContext);
+      
+   const navigate=useNavigate();
+
     
-    const submitHandler=(e)=>{
+    const submitHandler= async (e)=>{
         e.preventDefault();//this will prevent the page from reloading
-        setUserdata({
-            fullName:{
-                firstName:firstName,
-                secondName:secondName
+        const newUser={
+            fullname:{
+                firstname:firstName,
+                secondname:secondName
             },
             email:email,
             password:password,
-        });
-        //reset the input fields
-        setEmail('');
-        setPassword('');
-        setFirstName('');
-        setSecondName('');
+        };
+        try {
+            const response=await axios.post(`${BASE_URL}/users/register`,newUser);
+
+            if(response.status===201){//status 201 'created' means user is registered
+                const data=response.data;
+                setUser(data.user);
+                localStorage.setItem('token',data.token);
+                navigate('/home');
+            }
+            //reset the input fields
+            setEmail('');
+            setPassword('');
+            setFirstName('');
+            setSecondName('');   
+        } catch (error) {
+            console.log("Error registering User",error.message);
+        }        
     }
     
     
