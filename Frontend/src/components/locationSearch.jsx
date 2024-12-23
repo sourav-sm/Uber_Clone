@@ -2,7 +2,7 @@ import { ImLocation2 } from "react-icons/im";
 
 export default function LocationSearch(props) {
     //sample location 
-    console.log(props);
+    // console.log(props);
     const location = [
         "Hall3, NIT Durgapur, A zone, Durgapur, West Bengal",
         "Bhushila Balurghat Dakshin Dinajpur West Bengal",
@@ -13,9 +13,9 @@ export default function LocationSearch(props) {
     return (
         <div>
             {
-                location.map((loc)=>{
+                location.map((loc,idx)=>{
                     return(
-                        <div onClick={()=>{
+                        <div key={idx} onClick={()=>{
                             // console.log(props);
                              props.setVehicalPanel(true);
                              props.setpanelOpen(false);
