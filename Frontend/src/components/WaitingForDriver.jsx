@@ -9,15 +9,17 @@ function WaitingForDriver() {
     <div className='mt-5'>
           <div className='flex gap-2 justify-between  flex-col items-center active:border-black border-2 p-2 rounded-lg mb-4'>
               <div className='flex justify-between items-center w-full'>
-                 <div className='flex  gap-2'>
-                  <img className='h-10' src="https://cdn-iejhi.nitrocdn.com/NMxJCeGVpcAQdhpVLEQLtsJQObyxxCrn/assets/images/optimized/rev-d36051c/www.asaproadworthys.com.au/wp-content/uploads/2021/11/Select.jpeg" alt="car image"/>
-                   <img className='h-10' src='https://static.vecteezy.com/system/resources/thumbnails/035/544/575/small_2x/ai-generated-cheerful-black-man-looking-at-camera-isolated-on-transparent-background-african-american-male-person-portrait-png.png' alt='driver-Img'/>
+                 <div className='flex'>
+                  <img className='h-14' src="https://cdn-iejhi.nitrocdn.com/NMxJCeGVpcAQdhpVLEQLtsJQObyxxCrn/assets/images/optimized/rev-d36051c/www.asaproadworthys.com.au/wp-content/uploads/2021/11/Select.jpeg" alt="car image"/>
+                   <img className='h-14' src='https://static.vecteezy.com/system/resources/thumbnails/035/544/575/small_2x/ai-generated-cheerful-black-man-looking-at-camera-isolated-on-transparent-background-african-american-male-person-portrait-png.png' alt='driver-Img'/>
                  </div>   
-                 <div className='text-lg font-semibold'>
-                    <h3>Tusher Das</h3>
-                    <h4>WB 62 8906</h4>
-                    <h5>ncndn</h5>
-                 </div>  
+            
+                 <div className='text-right'>
+                   <h2 className='text-lg font-medium capitalize'>Tusher Das</h2>
+                   <h4 className='text-xl font-semibold -mt-1 -mb-1'>WB 62 8906</h4>
+                   <p className='text-sm text-gray-600'>Maruti Suzuki Alto</p>
+                   <h1 className='text-lg font-semibold'>  OTP </h1>
+                </div>
               </div>
              <div className='px-3 flex flex-col gap-4 mt-3 font-semibold'>
                <div className='flex justify-center items-center gap-3 border-b-2 pb-2'>
