@@ -8,6 +8,7 @@ import { BsCreditCardFill } from "react-icons/bs";
 
 
 const ConformRide = (props) => {
+  
   return (
     <div>
        <h5 className='flex justify-center items-center mb-2 p-2 text-2xl'
