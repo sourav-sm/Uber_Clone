@@ -2,6 +2,7 @@ import React from 'react'
 import { useRef,useState } from 'react'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
+import FinishRide from '../components/FinishRide'
 
 function CaptainRiding() {
     const [ finishRidePanel, setFinishRidePanel ] = useState(false)
@@ -33,6 +34,14 @@ function CaptainRiding() {
                 }}>
                 <h4 className='text-2xl font-bold'>4 KM away</h4>
                 <button className='bg-green-600 text-white font-semibold text-xl  px-5 py-3 rounded-lg '>Complete Ride</button>
+            </div>
+            <div>
+                FinsishRide
+            </div>
+            <div ref={finishRidePanelRef} className='fixed w-full z-[500] bottom-0 translate-y-full bg-white px-3 py-10 pt-12'>
+                <FinishRide
+                  setFinishRidePanel={setFinishRidePanel}
+                />
             </div>
        </div> 
   )

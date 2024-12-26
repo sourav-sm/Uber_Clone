@@ -38,7 +38,7 @@ function ConformRidePopup(props) {
                <h3 className='text-xl'>
                   <FaSquare/>
                </h3>
-                <p>Balurghat Railway Station,Balurghat, Dakshin Dinajpur, West Bengal</p>
+                <p>Durgapur Railway Station,Durgapur,West Bengal</p>
              </div>
              <div className='flex items-center gap-3 border-b-2 pb-2'>
                <h3 className='text-xl'>
